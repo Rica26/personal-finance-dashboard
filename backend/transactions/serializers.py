@@ -4,9 +4,10 @@ from .models import Transaction, Category
 
 class TransactionSerializer(serializers.ModelSerializer):
     category_name = serializers.CharField(source='category.name', read_only=True)
+    category_type = serializers.CharField(source='category.type', read_only=True)
     class Meta:
         model = Transaction
-        fields = ['id', 'category', 'category_name', 'amount', 'date', 'created_at', 'updated_at']
+        fields = ['id', 'category', 'category_name', 'category_type', 'amount', 'date', 'created_at', 'updated_at']
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:

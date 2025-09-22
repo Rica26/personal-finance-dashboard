@@ -13,7 +13,7 @@ class Category(models.Model):
     ]
     NAME_CHOICES = {
         'income': ['salary', 'freelance', 'investments', 'gifts', 'other'],
-        'expense': ['food', 'rent', 'utilities', 'entertainment', 'transportation', 'health', 'other']
+        'expense': ['groceries', 'rent', 'utilities', 'entertainment', 'transportation', 'health', 'other']
     }
 
     class Meta:
@@ -36,7 +36,7 @@ class Category(models.Model):
 class Transaction(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=10, decimal_places=2)
-    date = models.DateField(default=timezone.now().date)
+    date = models.DateField(default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
